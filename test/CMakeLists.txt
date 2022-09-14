@@ -9,6 +9,7 @@ add_custom_target(tests)
 
 # List of tests
 set(test_sources
+        "tests_home.c"
         "tests_path.c"
 )
 

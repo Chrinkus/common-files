@@ -1,8 +1,10 @@
 set(sources
         "cf_path.c"
+        "cf_home.c"
 )
 
 set(headers
+        "cf.h"
         "cf_defs.h"
         "cf_path.h"
 )
