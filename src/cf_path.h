@@ -29,3 +29,6 @@ cf_path_init(struct cf_path* p);
 
 void*
 cf_path_append(struct cf_path* p, const char* s);
+
+void*
+cf_path_set(struct cf_path* p, const char* s);

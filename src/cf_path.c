@@ -41,3 +41,15 @@ cf_path_append(struct cf_path* p, const char* s)
 
         return p;
 }
+
+void*
+cf_path_set(struct cf_path* p, const char* s)
+{
+        int len = strlen(s);
+        if (PATH_MAX < len + 1)                 // s + '\0'
+                return NULL;
+
+        strcpy(p->path, s);
+        p->len = len;
+        return p;
+}
