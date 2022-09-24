@@ -20,7 +20,7 @@
 #include "cf_path.h"
 
 void*
-cf_get_home(struct cf_path* p);
+cf_get_home(struct cf_path* out);
 
 void*
 cf_get_config(struct cf_path* out, const char* fname);

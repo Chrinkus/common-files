@@ -21,7 +21,7 @@
 #include <string.h>
 
 void*
-cf_get_home(struct cf_path* p)
+cf_get_home(struct cf_path* out)
 {
         char* tmp = getenv("HOME");
         if (!tmp)
@@ -31,7 +31,7 @@ cf_get_home(struct cf_path* p)
         if (len > PATH_MAX)
                 return NULL;
 
-        strcpy(p->path, tmp);
-        p->len = len;
-        return p;
+        strcpy(out->path, tmp);
+        out->len = len;
+        return out;
 }
