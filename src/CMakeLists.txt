@@ -1,6 +1,7 @@
 set(sources
         "cf_path.c"
         "cf_home.c"
+        "cf_config.c"
 )
 
 set(headers

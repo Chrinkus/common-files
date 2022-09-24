@@ -15,13 +15,35 @@
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-#pragma once
+#include "cf.h"
 
-#include "cf_path.h"
+#include "cf_defs.h"
+
+#include <stdlib.h>     // getenv, NULL
+
+static void*
+get_default_config_home(struct cf_path* out)
+{
+        const char* home = getenv("HOME");
+        if (!home)
+                return NULL;
+
+        if (!cf_path_append(out, home) || !cf_path_append(out, def_conf))
+                return NULL;
+
+        return out;
+}
 
 void*
-cf_get_home(struct cf_path* p);
-
-void*
-cf_get_config(struct cf_path* out, const char* fname);
+cf_get_config(struct cf_path* out, const char* fname)
+{
+        const char* xdg = getenv(xdg_conf);
+        if (xdg) {
+                if (!cf_path_append(out, xdg))
+                        return NULL;
+        } else if (!get_default_config_home(out)) {
+                return NULL;
+        }
+        return cf_path_append(out, fname);
+}
 
