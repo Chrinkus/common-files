@@ -1,7 +1,10 @@
-#include "cmocka_headers.h"
+#include "cf_test_utils.h"
 
 #include "cf.h"
 
+#include <string.h>
+
+/*
 #include <stdlib.h>
 #include <string.h>
 
@@ -28,6 +31,7 @@ home_teardown(void** state)
         free(*state);
         return 0;
 }
+*/
 
 static void
 get_home_test(void** state)
@@ -47,7 +51,7 @@ int main(void)
 {
         const struct CMUnitTest tests[] = {
                 cmocka_unit_test_setup_teardown(get_home_test,
-                                home_setup, home_teardown),
+                                cf_home_su, cf_home_td),
         };
 
         return cmocka_run_group_tests(tests, NULL, NULL);
